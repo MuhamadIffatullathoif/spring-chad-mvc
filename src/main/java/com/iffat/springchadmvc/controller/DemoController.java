@@ -17,31 +17,4 @@ public class DemoController {
         model.addAttribute("date", new Date());
         return "helloworld";
     }
-
-    @RequestMapping("/showForm")
-    public String showForm() {
-        return "helloworld-form";
-    }
-
-    @RequestMapping("/processForm")
-    public String processForm() {
-        return "helloworld";
-    }
-
-    @RequestMapping("/processFormVersionTwo")
-    public String processFormVersionTwo(HttpServletRequest request, Model model) {
-        String studentName = request.getParameter("studentName");
-        studentName = studentName.toUpperCase();
-        String result = "Yo! " + studentName;
-        model.addAttribute("message", result);
-        return "helloworld";
-    }
-
-    @RequestMapping("/processFormVersionThree")
-    public String processFormVersionThree(@RequestParam("studentName") String studentName, Model model) {
-        studentName = studentName.toUpperCase();
-        String result = "Hello My Friend From V3! " + studentName;
-        model.addAttribute("message", result);
-        return "helloworld";
-    }
 }
