@@ -1,5 +1,6 @@
 package com.iffat.springchadmvc.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,15 @@ public class DemoController {
 
     @RequestMapping("/processForm")
     public String processForm() {
+        return "helloworld";
+    }
+
+    @RequestMapping("/processFormVersionTwo")
+    public String processFormVersionTwo(HttpServletRequest request, Model model) {
+        String studentName = request.getParameter("studentName");
+        studentName = studentName.toUpperCase();
+        String result = "Yo! " + studentName;
+        model.addAttribute("message", result);
         return "helloworld";
     }
 }
