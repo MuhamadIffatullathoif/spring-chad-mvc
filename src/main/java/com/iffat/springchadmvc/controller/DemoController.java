@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -32,6 +33,14 @@ public class DemoController {
         String studentName = request.getParameter("studentName");
         studentName = studentName.toUpperCase();
         String result = "Yo! " + studentName;
+        model.addAttribute("message", result);
+        return "helloworld";
+    }
+
+    @RequestMapping("/processFormVersionThree")
+    public String processFormVersionThree(@RequestParam("studentName") String studentName, Model model) {
+        studentName = studentName.toUpperCase();
+        String result = "Hello My Friend From V3! " + studentName;
         model.addAttribute("message", result);
         return "helloworld";
     }
